@@ -71,7 +71,7 @@ class CorefModel(object):
     num_train_steps = int(
                     self.config['num_docs'] * self.config['num_epochs'])
     num_warmup_steps = int(num_train_steps * 0.1)
-    self.global_step = tf.train.get_or_create_global_step()
+    self.global_step = tf.compat.v1.train.get_or_create_global_step()
     self.train_op = optimization.create_custom_optimizer(tvars,
                       self.loss, self.config['bert_learning_rate'], self.config['task_learning_rate'],
                       num_train_steps, num_warmup_steps, False, self.global_step, freeze=-1,
