@@ -19,7 +19,7 @@ Markdown
 MarkupSafe
 mmh3
 msgpack-python
-numpy==1.21.0
+numpy
 Pillow
 protobuf
 psycopg2
@@ -36,7 +36,7 @@ scipy
 six
 tokenizer
 tensorflow-io
-tensorflow==1.14.0
+tensorflow
 tensorboard
 tensorflow-estimator
 tensorflow-gpu
