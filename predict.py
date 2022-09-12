@@ -19,7 +19,7 @@ if __name__ == "__main__":
   output_filename = sys.argv[3]
 
   model = util.get_model(config)
-  saver = tf.train.Saver()
+  saver = tf.compat.v1.train.Saver()
 
   with tf.Session() as session:
     model.restore(session)
