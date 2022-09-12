@@ -61,7 +61,7 @@ def create_custom_optimizer(tvars, loss, bert_init_lr, task_init_lr, num_train_s
           epsilon=eps
     )
   elif task_opt == 'adam':
-    task_optimizer = tf.train.AdamOptimizer(
+    task_optimizer = tf.compat.v1.train.AdamOptimizer(
       learning_rate=task_learning_rate)
   else:
     raise NotImplementedError('Check optimizer. {} is invalid.'.format(task_opt))
