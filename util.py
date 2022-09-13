@@ -114,7 +114,7 @@ def ffnn(inputs, num_hidden_layers, hidden_size, output_size, dropout, output_we
 
   output_weights = tf.get_variable("output_weights", [shape(current_inputs, 1), output_size], initializer=output_weights_initializer)
   output_bias = tf.get_variable("output_bias", [output_size], initializer=tf.zeros_initializer())
-  outputs = tf.nn.xw_plus_b(current_inputs, output_weights, output_bias)
+  outputs = tf.compat.v1.nn.xw_plus_b(current_inputs, output_weights, output_bias)
 
   if len(inputs.get_shape()) == 3:
     outputs = tf.reshape(outputs, [batch_size, seqlen, output_size])
