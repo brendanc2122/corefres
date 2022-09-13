@@ -25,6 +25,7 @@ import math
 import re
 import six
 import tensorflow as tf
+from tensorflow import keras
 
 
 class BertConfig(object):
