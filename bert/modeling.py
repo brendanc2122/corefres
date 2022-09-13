@@ -669,7 +669,7 @@ def attention_layer(from_tensor,
   to_tensor_2d = reshape_to_matrix(to_tensor)
 
   # `query_layer` = [B*F, N*H]
-  query_layer = keras.layers.dense(
+  query_layer =  tf.layers.dense(
       from_tensor_2d,
       num_attention_heads * size_per_head,
       activation=query_act,
