@@ -155,7 +155,7 @@ class BertModel(object):
         is invalid.
     """
     config = copy.deepcopy(config)
-    config.hidden_dropout_prob = tf.cast(is_training) * config.hidden_dropout_prob
+    config.hidden_dropout_prob = tf.to_float(is_training) * config.hidden_dropout_prob
     config.attention_probs_dropout_prob = tf.to_float(is_training) * config.attention_probs_dropout_prob
     # config.hidden_dropout_prob = tf.Print(config.hidden_dropout_prob, [config.hidden_dropout_prob], 'hdden')
     # if not is_training:
