@@ -45,9 +45,9 @@ class CorefModel(object):
     input_props.append((tf.int32, [None])) # Cluster ids.
     input_props.append((tf.int32, [None])) # Sentence Map
 
-    self.queue_input_tensors = [tf.placeholder(dtype, shape) for dtype, shape in input_props]
+    self.queue_input_tensors = [tf.compat.v1.placeholder(dtype, shape) for dtype, shape in input_props]
     dtypes, shapes = zip(*input_props)
-    queue = tf.PaddingFIFOQueue(capacity=10, dtypes=dtypes, shapes=shapes)
+    queue = tf.queue.PaddingFIFOQueue(capacity=10, dtypes=dtypes, shapes=shapes)
     self.enqueue_op = queue.enqueue(self.queue_input_tensors)
     self.input_tensors = queue.dequeue()
 
