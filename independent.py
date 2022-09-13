@@ -57,7 +57,7 @@ class CorefModel(object):
     # If you're using TF weights only, tf_checkpoint and init_checkpoint can be the same
     # Get the assignment map from the tensorflow checkpoint. Depending on the extension, use TF/Pytorch to load weights.
     assignment_map, initialized_variable_names = modeling.get_assignment_map_from_checkpoint(tvars, config['tf_checkpoint'])
-    init_from_checkpoint = tf.train.init_from_checkpoint if config['init_checkpoint'].endswith('ckpt') else load_from_pytorch_checkpoint
+    init_from_checkpoint = tf.compat.v1.train.init_from_checkpoint if config['init_checkpoint'].endswith('ckpt') else load_from_pytorch_checkpoint
     init_from_checkpoint(config['init_checkpoint'], assignment_map)
     print("**** Trainable Variables ****")
     for var in tvars:
