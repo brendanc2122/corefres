@@ -155,7 +155,7 @@ class BertModel(object):
         is invalid.
     """
     config = copy.deepcopy(config)
-    config.hidden_dropout_prob = tf.to_float(is_training) * config.hidden_dropout_prob
+    config.hidden_dropout_prob = tf.cast(is_training) * config.hidden_dropout_prob
     config.attention_probs_dropout_prob = tf.to_float(is_training) * config.attention_probs_dropout_prob
     # config.hidden_dropout_prob = tf.Print(config.hidden_dropout_prob, [config.hidden_dropout_prob], 'hdden')
     # if not is_training:
@@ -172,8 +172,8 @@ class BertModel(object):
     if token_type_ids is None:
       token_type_ids = tf.zeros(shape=[batch_size, seq_length], dtype=tf.int32)
 
-    with tf.variable_scope(scope, default_name="bert", reuse=tf.AUTO_REUSE):
-      with tf.variable_scope("embeddings"):
+    with tf.compat.v1.variable_scope(scope, default_name="bert", reuse=tf.compat.v1.AUTO_REUSE):
+      with tf.compat.v1.variable_scope("embeddings"):
         # Perform embedding lookup on the word ids.
         (self.embedding_output, self.embedding_table) = embedding_lookup(
             input_ids=input_ids,
@@ -668,7 +668,7 @@ def attention_layer(from_tensor,
   to_tensor_2d = reshape_to_matrix(to_tensor)
 
   # `query_layer` = [B*F, N*H]
-  query_layer = tf.layers.dense(
+  query_layer = keras.layers.dense(
       from_tensor_2d,
       num_attention_heads * size_per_head,
       activation=query_act,
