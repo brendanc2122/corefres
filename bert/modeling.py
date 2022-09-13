@@ -411,7 +411,7 @@ def embedding_lookup(input_ids,
   if input_ids.shape.ndims == 2:
     input_ids = tf.expand_dims(input_ids, axis=[-1])
 
-  embedding_table = tf.get_variable(
+  embedding_table = tf.compat.v1.get_variable(
       name=word_embedding_name,
       shape=[vocab_size, embedding_size],
       initializer=create_initializer(initializer_range))
@@ -494,7 +494,7 @@ def embedding_postprocessor(input_tensor,
   if use_position_embeddings:
     assert_op = tf.assert_less_equal(seq_length, max_position_embeddings)
     with tf.control_dependencies([assert_op]):
-      full_position_embeddings = tf.get_variable(
+      full_position_embeddings = tf.compat.v1.get_variable(
           name=position_embedding_name,
           shape=[max_position_embeddings, width],
           initializer=create_initializer(initializer_range))
