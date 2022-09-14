@@ -402,7 +402,7 @@ class CorefModel(object):
       mention_mask = tf.logical_and(doc_range >= tf.expand_dims(span_starts, 1), doc_range <= tf.expand_dims(span_ends, 1)) #[K, T]
       with tf.variable_scope("mention_word_attn"):
         word_attn = tf.squeeze(util.projection(encoded_doc, 1, initializer=tf.truncated_normal_initializer(stddev=0.02)), 1)
-      mention_word_attn = tf.nn.softmax(tf.log(tf.to_float(mention_mask)) + tf.expand_dims(word_attn, 0))
+      mention_word_attn = tf.nn.softmax(tf.math.log(tf.to_float(mention_mask)) + tf.expand_dims(word_attn, 0))
       return mention_word_attn
 
 
