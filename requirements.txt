@@ -5,6 +5,7 @@ bert-tensorflow
 certifi
 cort
 docutils
+datasets
 future
 gast
 google-pasta
