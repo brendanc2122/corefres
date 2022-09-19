@@ -20,7 +20,7 @@ Markdown
 MarkupSafe
 mmh3
 msgpack-python
-numpy
+numpy==1.21.0
 Pillow
 protobuf
 psycopg2
