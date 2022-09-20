@@ -7,7 +7,7 @@ cort
 docutils
 datasets
 future
-gast
+gast==0.3.2
 google-pasta
 grpcio
 h5py
