@@ -37,7 +37,7 @@ scipy
 six
 tokenizer
 tensorflow-io
-tensorflow==2.0.0
+tensorflow==1.14.0
 tensorboard
 tensorflow-estimator
 tensorflow-gpu
