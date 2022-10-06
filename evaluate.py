@@ -18,7 +18,7 @@ def read_doc_keys(fname):
 if __name__ == "__main__":
   config = util.initialize_from_env()
   model = util.get_model(config)
-  saver = tf.train.Saver()
+  saver = tf.compat.v1.train.Saver()
   log_dir = config["log_dir"]
   with tf.Session() as session:
     model.restore(session)
