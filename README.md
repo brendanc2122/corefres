@@ -47,7 +47,7 @@ This assumes access to OntoNotes 5.0.
   "sentences": [["[CLS]", "subword1", "##subword1", ".", "[SEP]"]], # list of BERT tokenized segments. Each segment should be less than the max_segment_len in your config
   "speakers": [["[SPL]", "-", "-", "-", "[SPL]"]], # speaker information for each subword in sentences
   "sentence_map": [0, 0, 0, 0, 0], # flat list where each element is the sentence index of the subwords
-  "subtoken_map": [0, 0, 0, 1, 1]  # flat list containing original word index for each subword. [CLS]  and the first word share the same index
+  "subtoken_map": [0, 0, 0, 1, 1]  # flat list containing original word index for each subword. [CLS] and the first word share the same index
 }
 ```
   * `clusters` should be left empty and is only used for evaluation purposes.
@@ -55,6 +55,18 @@ This assumes access to OntoNotes 5.0.
   * `speakers` indicates the speaker of each word. These can be all empty strings if there is only one known speaker.
 * Run `GPU=0 python predict.py <experiment> <input_file> <output_file>`, which outputs the input jsonlines with an additional key `predicted_clusters`.
 
+## Predicted Output 
+```
+{
+  "clusters": [], # leave this blank
+  "doc_key": "nw", # key closest to your domain. "nw" is newswire. See the OntoNotes documentation.
+  "sentences": [["[CLS]", "subword1", "##subword1", ".", "[SEP]"]], # list of BERT tokenized segments. 
+  "speakers": [["[SPL]", "-", "-", "-", "[SPL]"]], # speaker information for each subword in sentences
+  "sentence_map": [0, 0, 0, 0, 0], # flat list where each element is the sentence index of the subwords
+  "subtoken_map": [0, 0, 0, 1, 1]  # flat list containing original word index for each subword. [CLS] and the first word share the same index
+  "predicted_clusters": [[[0, 1], [21, 25]], [[5, 5], [27, 29], [44, 46], [61, 63]]]
+}
+```
 ## Notes
 * The current config runs the Independent model.
 * When running on test, change the `eval_path` and `conll_eval_path` from dev to test.
