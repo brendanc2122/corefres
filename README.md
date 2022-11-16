@@ -63,7 +63,7 @@ This assumes access to OntoNotes 5.0.
   "sentences": [["[CLS]", "subword1", "##subword1", ".", "[SEP]"]], # list of BERT tokenized segments. 
   "speakers": [["[SPL]", "-", "-", "-", "[SPL]"]], # speaker information for each subword in sentences
   "sentence_map": [0, 0, 0, 0, 0], # flat list where each element is the sentence index of the subwords
-  "subtoken_map": [0, 0, 0, 1, 1]  # flat list containing original word index for each subword. [CLS] and the first word share the same index
+  "subtoken_map": [0, 0, 0, 1, 1]  # flat list containing original word index for each subword. 
   "predicted_clusters": [[[0, 1], [21, 25]], [[5, 5], [27, 29], [44, 46], [61, 63]]] # List of lists containing the predicted start and end index of mentions
   "top_spans": [[1, 15], [5, 5], [5, 14], [11, 14], [18, 18], [18, 19]] # List of lists containing the predicted start and end index of top mentions
   "head_scores": []
